@@ -5,7 +5,7 @@ const Modal = () => {
   const [formData, setFormData] = useState({
     userName: "",
     email: "",
-    ph: "",
+    phone: "",
     dob: "",
   });
 
@@ -19,17 +19,21 @@ const Modal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const { ph, dob } = formData;
+    const {email, phone, dob } = formData;
 
-    if (ph.length < 10) {
-      alert("Invalid phone number. Please enter a 10-digit phone number.");
+    if(!email.includes("@"&&".com")){
+        return alert("Invalid email")
+    }
+
+    if (phone.length < 10) {
+      alert("Invalid phone number");
       return;
     }
 
     const selectedDate = new Date(dob);
     const presentDate = new Date();
     if (selectedDate > presentDate) {
-      return alert("Invalid date of birth.Dateof Birth cannot be in future");
+      return alert("Invalid date of birth");
     }
 
     setFormData({ userName: "", email: "", ph: "", dob: "" });
@@ -81,7 +85,7 @@ const Modal = () => {
         }}
       >
         <h1>User Detail Form</h1>
-        <button
+        <button 
           style={{
             all: "unset",
             height: "40px",
@@ -143,8 +147,8 @@ const Modal = () => {
               <h4>Phone Number: </h4>
               <input
                 type="text"
-                id="ph"
-                value={formData.ph}
+                id="phone"
+                value={formData.phone}
                 onChange={handleChange}
                 style={{ display: "block", width: "20rem", height: "30px" }}
               />
@@ -159,6 +163,7 @@ const Modal = () => {
               />
 
               <button
+              
                 type="submit"
                 className="submit-button"
                 style={{
