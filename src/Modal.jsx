@@ -127,7 +127,7 @@ const Modal = () => {
               <h4>User Name: </h4>
               <input
                 type="text"
-                id="userName"
+                id="username"
                 required
                 value={formData.userName}
                 onChange={handleChange}
